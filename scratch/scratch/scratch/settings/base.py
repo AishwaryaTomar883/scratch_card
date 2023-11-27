@@ -67,6 +67,7 @@ DATABASES = {
     }
 }
 
+
 EMAIL_BACKEND = env.str("EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
 EMAIL_HOST = env.str("EMAIL_HOST", "")
 EMAIL_HOST_USER = env.str("EMAIL_HOST_USER", "")
