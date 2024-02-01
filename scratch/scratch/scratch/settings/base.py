@@ -205,7 +205,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.messages",
     #"kn_defaults.logging",
-
+    "django_extensions",
     "rest_framework",
     "rest_framework.authtoken",
 	# "djvue",

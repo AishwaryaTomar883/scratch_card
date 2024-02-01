@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+  <title>Scratch Card</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.jsdelivr.net/npm/scratchcard-js@1.5.5/build/scratchcard.min.js"></script>
+  <script src="{% static 'js/home.js' %}"></script>
+</head>
+
+<body>
+  {% for card in data %}
+  <div class="sc__wrapper">
+    <!-- scratchcard -->
+    <div class="sc__container" data-content="{{ card.content }}" id="js--sc--container-{{ card.id }}">
+      <!-- background image insert here by scratchcard-js -->
+      <!-- canvas generate here -->
+    </div>
+    <!-- infos -->
+    <div class="sc__infos">
+      <!-- percent -->
+    </div>
+  </div>
+  {% endfor %}
+</body>
+
+</html>

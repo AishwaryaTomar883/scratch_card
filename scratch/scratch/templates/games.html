@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Game Selection</title>
+  <style>
+    body {
+      background-image: url('/static/images/background-image.jpg');
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    h2 {
+      color: #fff;
+    }
+
+    .game-button {
+      display: inline-block;
+      margin: 10px;
+      padding: 15px 30px;
+      font-size: 18px;
+      text-align: center;
+      text-decoration: none;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .game-image {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+
+  </style>
+</head>
+<br><br><br><br><br><br>
+
+<body>
+
+  {% for game_info in game_context %}
+  <a href="#" onclick="playGame('{{ game_info.game_data.id }}')" class="game-button">
+    <img src="{{ game_info.game_data.img_path }}" alt="Game" class="game-image">
+    <br>{% if game_info.played %}Played{% else %}Let's play{% endif %}
+  </a>
+  {% endfor %}
+
+  <script>
+    function playGame(gameId) {
+      let currentURL = new URL(window.location.href);
+      let email = currentURL.searchParams.get("email");
+      const redirectUrl = `/myapp/games/${gameId}/?email=${encodeURIComponent(email)}`;
+      window.location.href = redirectUrl;
+    }
+  </script>
+</body>
+
+</html>

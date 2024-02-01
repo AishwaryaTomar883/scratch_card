@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+  <title>Email Submission Page</title>
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<br><br><br><br><br>
+<body>
+  <div class="email-form">
+    <h2>Enter Your Email Address</h2>
+    <form id="emailForm" onsubmit="submitForm(); return false;">
+      <input type="email" id="email" class="email-input" placeholder="Your Email" required>
+      <button type="submit" class="submit-button">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    function submitForm() {
+      const email = document.getElementById("email").value;
+      const redirectUrl = `/myapp/games/?email=${encodeURIComponent(email)}`;
+      window.location.href = redirectUrl;
+    }
+  </script>
+</body>
+
+</html>

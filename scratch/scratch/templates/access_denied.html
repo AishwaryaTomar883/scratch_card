@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+  <title>Access Denied</title>
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <style>
+    h2 {
+      color: #ff0000; /* Red color for emphasis */
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Access Denied</h2>
+  <p>{{ message }}</p>
+  <p>{{ message_freq }}</p>
+</body>
+
+</html>

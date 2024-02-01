@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+  <title>Game History</title>
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <style>
+    h2 {
+      color: #3498db; /* Blue color for emphasis */
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f18973;
+      color: white;
+      text-align: center;
+    }
+
+    #toggleButton {
+      margin-top: 10px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Game History</h2>
+  <button id="toggleButton">Game</button>
+
+  <table id="gameWiseTable" class="hidden">
+    <thead>
+      <tr>
+        <th>Game Title</th>
+        <th>Played At</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for game_title, entries in grouped_history_data.items %}
+        <tr>
+          <td colspan="2" style="background-color: #3498db; color: white;">{{ game_title }}</td>
+        </tr>
+        {% for entry in entries %}
+          <tr>
+            <td>{{ entry.game_title }}</td>
+            <td>{{ entry.played_at }}</td>
+          </tr>
+        {% endfor %}
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <table id="dateWiseTable">
+    <thead>
+      <tr>
+        <th>Game Title</th>
+        <th>Played At</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for entry in history_data %}
+      <tr>
+        <td>{{ entry.game_title }}</td>
+        <td>{{ entry.played_at }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggleButton = document.getElementById('toggleButton');
+      const gameWiseTable = document.getElementById('gameWiseTable');
+      const dateWiseTable = document.getElementById('dateWiseTable');
+
+      toggleButton.addEventListener('click', function () {
+        if (gameWiseTable.classList.contains('hidden')) {
+          gameWiseTable.classList.remove('hidden');
+          dateWiseTable.classList.add('hidden');
+        } else {
+          gameWiseTable.classList.add('hidden');
+          dateWiseTable.classList.remove('hidden');
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
