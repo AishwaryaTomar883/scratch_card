@@ -80,7 +80,7 @@ def scratch_details(request):
 
             return JsonResponse({'status': 'success'})
 
-    return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+        return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
 
 
 def games(request, id=None):
